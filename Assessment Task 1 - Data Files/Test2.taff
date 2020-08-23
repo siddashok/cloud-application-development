@@ -1,0 +1,17 @@
+// The name of the configuration file.
+CONFIG-FILE="Test2.cff"
+
+// The number of allocations in this file, 
+// the number of tasks per allocation, and 
+// the number of processors per allocation.
+ALLOCATIONS-DATA=1,5,3
+
+// The set of allocations.
+// The ith row is the allocation of tasks to the ith processor.
+// The jth column is the allocation of the jth task to a processor.
+ALLOCATION-ID=1
+0,1,0,1,0
+1,0,1,0,0
+0,0,0,0,1
+
+
