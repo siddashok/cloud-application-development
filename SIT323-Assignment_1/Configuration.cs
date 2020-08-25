@@ -26,9 +26,10 @@ namespace SIT323_Assignment
         private double Frequency;
         private float[,] runTime;
         private string[,] Process_ID;
-        public int[,] Coefficient_ID;
+        public double[,] Coefficient_ID;
         public int TASK;
         public int PROCESSOR;
+        public int c_id = 0;
 
         public bool IsValid(string path)
         {
@@ -261,17 +262,18 @@ namespace SIT323_Assignment
                             {
                                 errorList.Add("Error: cofficient value not correct");
                             }
-                            Coefficient_ID = new int[PROCESSOR, 2];
-                            for (int b = 0; b < PROCESSOR; b++)
-                            {
+                            Coefficient_ID = new double[PROCESSOR*3, 2];
+                            int b = 0;
+                            //for (int b = 0; b < PROCESSOR; b++)
+                            //{
                                 for (int a = 2; a < (item.Length); a += 4)
                                 {
-                                    Coefficient_ID[0, 1] = Int32.Parse(item[a]);
-                                    Coefficient_ID[1, 1] = Int32.Parse(item[a+1]);
-                                    Coefficient_ID[2, 1] = Int32.Parse(item[a+2]);
-
+                                    Coefficient_ID[b, 1] = Double.Parse(item[a]);
+                                    Coefficient_ID[b+1, 1] = Double.Parse(item[a+1]);
+                                    Coefficient_ID[b+2, 1] = Double.Parse(item[a+2]);
+                                    b += 3;
                                 }
-                            }
+                          //  }
 
                         }
                     }
@@ -346,8 +348,9 @@ namespace SIT323_Assignment
 
         public double CalEnergyPerSecond(double temp)
         {
-            return (Coefficient_ID[2, 1] * temp * temp + Coefficient_ID[1, 1] * temp + Coefficient_ID[0, 1]);
-            
+            double x =  (Coefficient_ID[c_id+2, 1] * temp * temp + Coefficient_ID[c_id+1, 1] * temp + Coefficient_ID[c_id, 1]);
+            //c_id += 3;
+            return x;
         }
 
         public double CalTaskEnergy(float taskID, string processID)
