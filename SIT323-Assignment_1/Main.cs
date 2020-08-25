@@ -83,7 +83,7 @@ namespace SIT323_Assignment
                     }
                     else
                     {
-                        task_error.textBoxForm.Text += "ERROR:" + task_allocation.GetCffPath().Replace(Path.GetDirectoryName(Address) + "\\", String.Empty) + "\r\n";
+                        task_error.textBoxForm.Text +=  task_allocation.GetCffPath().Replace(Path.GetDirectoryName(Address) + "\\", String.Empty) + "\r\n";
                     }
 
                     MenuItem_Validate_Allocations.Enabled = true;
