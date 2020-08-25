@@ -232,16 +232,18 @@ namespace SIT323_Assignment
                             errorList.Add("Error: PROCESSORS-FREQUENCIES-RAM not correct/mismatch");
                         }
                          Process_ID = new string[PROCESSOR, 2];
-                        for (int b = 0; b < PROCESSOR; b++)
-                        {
+                        int c = 0;
+                     //   for (int b = 0; b < PROCESSOR; b++)
+                     //  {
                             for (int a = 2; a < (item.Length); a += 3)
                             {
-                                string KeyWord = b.ToString();
+                                string KeyWord = c.ToString();
                                 string FREQUENCY = item[a];
-                                Process_ID[b, 0] = KeyWord;
-                                Process_ID[b, 1] = FREQUENCY;
+                                Process_ID[c, 0] = KeyWord;
+                                Process_ID[c, 1] = FREQUENCY;
+                                c += 1;
                             }
-                        }
+                      // }
 
                     }
                     else if (line.StartsWith("PROCESSORS-COEFFICIENTS"))
@@ -330,7 +332,7 @@ namespace SIT323_Assignment
                 if (runTime > TaskHome.task_config.Duration())
                 {
                     runTime = Math.Round(runTime, 2);
-                    TaskHome.task_error.textBoxForm.Text += "Error:the runtime(" + runTime.ToString() + "s) of allocation " + temp.id + " is greater than the expected maximum(8s).\r\n";
+                    TaskHome.task_error.textBoxForm.Text += "Error:the runtime(" + runTime.ToString() + "s) of allocation " + temp.id + " is greater than the expected maximum(3s).\r\n";
                     checkAns = false;
                 }
             }
@@ -339,7 +341,7 @@ namespace SIT323_Assignment
 
         public double Duration()
         {
-            return duration;
+            return duration;  //3 
         }
 
         public double CalEnergyPerSecond(double temp)
